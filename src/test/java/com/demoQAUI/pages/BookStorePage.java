@@ -27,7 +27,7 @@ public class BookStorePage extends HomePage {
         bookStorePage.loginButton.click();
         bookStorePage.userNameBox.sendKeys(username);
         bookStorePage.passwordBox.sendKeys(password);
-        BrowserUtils.clickWithJS(loginButton);
+        BrowserUtils.clickWithJS(bookStorePage.loginButton);
     }
 
     @FindBy(xpath = "//span[.='Book Store']")

@@ -50,3 +50,11 @@ Feature: Bookstore Application Functionality
       | Git Pocket Guide    | Richard E. Silverman | 234       | 9781449325862 | A Working Introduction            |
       | Speaking JavaScript | Axel Rauschmayer     | 460       | 9781449365035 | An In-Depth Guide for Programmers |
       | You Don't Know JS   | Kyle Simpson         | 278       | 9781491904244 | ES6 & Beyond                      |
+
+
+#I created this scenario  In order to run this test suit over and over again for your comfortable
+# Deleting all books from user (johnWick) profile
+    Scenario: Deleting all book in profile
+      When User is logged in
+      And User clicks the Profile module
+      And User clicks delete all books button

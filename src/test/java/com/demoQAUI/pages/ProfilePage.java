@@ -12,4 +12,9 @@ public class ProfilePage extends HomePage{
 
     @FindBy(xpath = "(//button[.='Delete All Books'])[1]")
     public WebElement deleteAllBooks;
+
+    @FindBy(xpath = "//button[.='OK']")
+    public WebElement okButton;
+
+
 }

@@ -57,7 +57,7 @@ public class FrontentStepDef {
     }
     @When("User clicks the Go To Book Store button")
     public void user_clicks_the_go_to_book_store_button() {
-        //BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(2);
         BrowserUtils.clickWithJS(bookStorePage.bookStoreButton);
     }
     @When("User clicks the following {string}")
@@ -80,13 +80,12 @@ public class FrontentStepDef {
     public void user_should_see_the_information_pop_up_message() {
         Alert alert = Driver.getDriver().switchTo().alert();
         Assert.assertTrue(alert.getText().contains("added"));
-        //BrowserUtils.waitFor(2);
         alert.accept();
     }
     @When("User clicks the Profile module")
     public void user_clicks_the_profile_module() {
+        BrowserUtils.waitFor(2);
         BrowserUtils.clickWithJS(bookStorePage.profileButton);
-        //BrowserUtils.waitFor(2);
     }
     @Then("User checks the {int} of books in their account")
     public void user_checks_the_number_of_books_in_their_account(int numberOfBook) {
@@ -110,10 +109,14 @@ public class FrontentStepDef {
         Assert.assertEquals(isbn,bookStorePage.booksInfo("ISBN").getText());
         Assert.assertEquals(subTitle,bookStorePage.booksInfo("sub").getText());
 
+    }
+
+    @And("User clicks delete all books button")
+    public void userClicksDeleteAllBooksButton() {
         // I did not create a new user. In order to run this test suit over and over again for your comfortable I have to write this code.
         // deleting all books from user (johnWick) profile
-        Driver.getDriver().navigate().back();
-        profilePage.deleteAllBooks.click();
+        BrowserUtils.clickWithJS(profilePage.deleteAllBooks);
+        profilePage.okButton.click();
 
     }
 }
