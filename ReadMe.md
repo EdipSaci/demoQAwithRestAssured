@@ -209,4 +209,21 @@ Your report will be generated under target as HTML Report
 > 3. Create a test package in order to write actual code fragments
 
 
+## Important Notes
+Normally I have a framework for API testing. It is Serenity BDD framework. I could not implement it in this project. Because there is frontend part as well. I am using Cucumber BDD framework with Selenium for that. So I have chose Cucumber.
 
+#### My Serenity usage
+> 1. I have serenity.conf file and serenity.properties file where I store my base url, Database connection string and one valid user credentials for each type of user.
+> 2. serenity.conf file allows me to switch between environment easily.I have same key name with different environments so that when I want to switch I use mvn clean verify -dEnvironment=...(qa2) and it runs my test cases against to env I used. If I dont specify it will use default environment that I set in serenity.conf file
+> 3. I label my classes with @SerenityTest and I set my report and root name in serenity.properties file. So that tests are recognized by report.
+### Junit5 Usage
+> 1. I have BaseTest for my project where I use @BeforeAll and @AfterAll methods to set my base_url, db connection, and close connections and reset.
+> 2. I have used regular @Tests and @ParametrizedTests from Junit5. @ParameterizedTests allow me to run same testcase with different sets of data which is DDT(Data Driven Testing).
+> 3. I use @MethodSource and @CsvFileSource mostly, but I know there are like ValueSource and CsvSource also.
+### RestAssured Usage
+> 1. I use Serenity version of RestAssured library where I have same methods in gherkin format.Gherkin allow me type readable test cases for non-technical people.If the person knows API they can easily understand my test cases.
+> 2. Serenity way is allowing me to get request and response in the report.I also use Ensure.that() type of verification to log each assertion that I make, to see in the report.
+> 3. I use Hamcrest matchers inside the my assertion,I use pojo classes and java maps mostly to store and send request and json body.
+
+
+This is a small task. So I did not create any utility classes for API part. I implemented DDT by using Csv source with ParameterizedTest annotations. Also I have an experience by using Method source and Csv file source annotations.
